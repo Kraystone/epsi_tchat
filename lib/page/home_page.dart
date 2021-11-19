@@ -46,20 +46,20 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasData) {
               return ListView.builder(
                   itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) => _buildListElement()
+                  itemBuilder: (context, index) => _buildListElement(snapshot.data![index]),
               );
             }
-              break;
+              return const CircularProgressIndicator();
             case ConnectionState.done:
               // TODO: Handle this case.
-              break;
+              return const CircularProgressIndicator();
           }
         }
       ),
     );
   }
 
-  ListTile _buildListElement() {
+  ListTile _buildListElement(Message list) {
     return ListTile(
       leading: const CircleAvatar(
         child: Text("AB"),
